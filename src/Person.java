@@ -18,8 +18,8 @@ public class Person {
     }
 
     public void deleteTicket() {
-        System.out.println(firstName + " " + lastName + " прокатился на аттракционе, осталось билетов: " + ticket);
         ticket--;
+        System.out.println(firstName + " " + lastName + " прокатился на аттракционе, осталось билетов: " + ticket);
     }
 
     @Override
