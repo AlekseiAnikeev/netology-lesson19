@@ -8,12 +8,16 @@ public class Main {
     public static void main(String[] args) {
         Queue<Person> attraction = (Queue<Person>) generateClients();
         while (!attraction.isEmpty()) {
-            if (attraction.peek().getTicket() > 1) {
-                attraction.peek().deleteTicket();
-                attraction.offer(attraction.poll());
-            } else {
-                attraction.peek().deleteTicket();
-                attraction.poll();
+            if (attraction.peek().getTicket() != 0) {
+                if (attraction.peek().getTicket() > 1) {
+                    attraction.peek().deleteTicket();
+                    attraction.offer(attraction.poll());
+                } else {
+                    attraction.peek().deleteTicket();
+                    attraction.poll();
+                }
+            }else {
+                System.out.println(attraction.poll() + ". Нет билет! Штраф пожалуйста заплатите...");
             }
         }
     }
@@ -24,7 +28,7 @@ public class Main {
         clients.add(new Person("Семен", "Никифоров", new Random().nextInt(5) + 1));
         clients.add(new Person("Николя", "Семенов", new Random().nextInt(5) + 1));
         clients.add(new Person("Светлана", "Аникеева", new Random().nextInt(5) + 1));
-        clients.add(new Person("Павлунтий", "Василенко", new Random().nextInt(5) + 1));
+        clients.add(new Person("Павлунтий", "Василенко",0));
         return clients;
     }
 }
