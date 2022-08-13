@@ -8,16 +8,16 @@ public class Main {
     public static void main(String[] args) {
         Queue<Person> attraction = (Queue<Person>) generateClients();
         while (!attraction.isEmpty()) {
-            if (attraction.peek().getTicket() != 0) {
-                if (attraction.peek().getTicket() > 1) {
-                    attraction.peek().deleteTicket();
-                    attraction.offer(attraction.poll());
+            Person person = attraction.poll();
+            if (person.getTicket() > 0) {
+                if (person.getTicket() > 1) {
+                    person.deleteTicket();
+                    attraction.offer(person);
                 } else {
-                    attraction.peek().deleteTicket();
-                    attraction.poll();
+                    person.deleteTicket();
                 }
             }else {
-                System.out.println(attraction.poll() + ". Нет билет! Штраф пожалуйста заплатите...");
+                System.out.println(person + ". Нет билет! Штраф пожалуйста заплатите...");
             }
         }
     }
